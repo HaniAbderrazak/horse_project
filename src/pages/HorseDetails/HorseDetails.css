@@ -1,0 +1,39 @@
+/* src/pages/HorseDetails.css */
+.horse-details-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+  }
+  
+  .horse-details-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .horse-details-container p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  /* Image upload section */
+  .image-upload {
+    margin-top: 20px;
+  }
+  
+  .file-input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .uploaded-image {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
