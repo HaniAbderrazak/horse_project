@@ -1,4 +1,3 @@
-// src/components/HeroCarousel.tsx
 import { useTheme } from '../context/ThemeContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -35,7 +34,7 @@ const HorseCarousel = () => {
         centeredSlides={true}
         autoplay={{
           delay: 5000,
-          
+
           disableOnInteraction: false,
         }}
         pagination={{

@@ -1,5 +1,4 @@
-// src/pages/Login.tsx
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { FaSignInAlt, FaEye, FaEyeSlash, FaExclamationCircle, FaEnvelope, FaLock } from 'react-icons/fa';
@@ -33,6 +32,12 @@ export const Login = () => {
       setIsSubmitting(false);
     }
   };
+   // Check for existing user on component mount
+   useEffect(() => {
+    if (authContext?.user) {
+      navigate(location.state?.from?.pathname || '/horses');
+    }
+  }, [authContext?.user, navigate, location.state?.from?.pathname]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

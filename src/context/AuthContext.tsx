@@ -44,11 +44,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setError(null);
     try {
       const response = await apiLogin(email, password);
-      const userData = { email, token: response.token };
+      const userData = { 
+        email: response.user.email,
+        token: response.token,
+        // Add any other user data you need to store
+      };
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
+      // Clear any invalid stored data
+      localStorage.removeItem('user');
       throw err;
     } finally {
       setLoading(false);

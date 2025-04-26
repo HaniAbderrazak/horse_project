@@ -1,4 +1,3 @@
-// src/pages/HorseDetails.tsx
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { horses } from "../../api/horses";
@@ -40,7 +39,7 @@ const HorseDetails = () => {
     <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row gap-8 mb-8  max-h-96">
+        <div className="flex flex-col md:flex-row gap-8 mb-8  ">
           {/* Image Section */}
           <div className="w-full md:w-1/3">
             <div className={`relative rounded-xl overflow-hidden shadow-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
@@ -158,20 +157,21 @@ const HorseDetails = () => {
         </div>
 
         {/* Gallery Section */}
-        <div className={`p-6 rounded-xl shadow-lg mb-8 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
-          <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="aspect-square rounded-lg overflow-hidden">
-                <img
-                  src={`https://images.unsplash.com/photo-1553284965-e2815db2e5a0`}
-                  alt={`Gallery ${item}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+   {/* Gallery Section */}
+<div className={`p-6 rounded-xl shadow-lg mb-8 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+  <h2 className="text-2xl font-bold mb-4">Gallery</h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    {[1, 2, 3, 4].map((item) => (
+      <div key={item} className="aspect-square rounded-lg overflow-hidden">
+        <img
+          src={`https://images.unsplash.com/photo-1553284965-e2815db2e5a0`}
+          alt={`Gallery ${item}`}
+          className="w-full h-full object-cover hover:scale-105 transition-transform"
+        />
+      </div>
+    ))}
+  </div>
+</div>
       </div>
     </div>
     </div>

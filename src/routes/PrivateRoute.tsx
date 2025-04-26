@@ -15,11 +15,7 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     throw new Error('AuthContext must be used within an AuthProvider');
   }
 
-  const { user, loading } = authContext;
-
-  if (loading) {
-    return <div>Loading...</div>; // Or a proper loading spinner
-  }
+  const { user } = authContext;
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
