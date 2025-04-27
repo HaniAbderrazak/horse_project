@@ -1,44 +1,38 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
 import { FaSignInAlt, FaEye, FaEyeSlash, FaExclamationCircle, FaEnvelope, FaLock } from 'react-icons/fa';
 import horseLogo from '../../assets/horse_logo.png';
+import { login } from '../../services/UserService';
+import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 
 export const Login = () => {
+  useAuthRedirect();
   const [email, setEmail] = useState('noonacademy.an@gmail.com');
   const [password, setPassword] = useState('2d4ILZCLc5NX');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const authContext = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [error, setError] = useState('');
 
-  if (!authContext) {
-    throw new Error('AuthContext must be used within an AuthProvider');
-  }
 
-  const { login, error } = authContext;
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     try {
       await login(email, password);
       const origin = location.state?.from?.pathname || '/horses';
       navigate(origin);
     } catch (err) {
-      // Error is already handled in the auth context
+      setError('Login failed');
     } finally {
       setIsSubmitting(false);
     }
   };
-   // Check for existing user on component mount
-   useEffect(() => {
-    if (authContext?.user) {
-      navigate(location.state?.from?.pathname || '/horses');
-    }
-  }, [authContext?.user, navigate, location.state?.from?.pathname]);
-
+ 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };

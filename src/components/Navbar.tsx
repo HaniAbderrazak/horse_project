@@ -1,21 +1,19 @@
 import { FaMoon, FaSignOutAlt, FaSun } from 'react-icons/fa'
 import horseLogo from '../assets/horse_logo.png'
 import { useTheme } from '../context/ThemeContext'
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
+
 import { Link, useNavigate } from 'react-router-dom'
+import { clearToken } from '../utils/auth'
 
 const Navbar = () => {
   const { isDarkMode, toggleTheme } = useTheme()
 // Get auth context directly without useAuth hook
 const navigate = useNavigate();
-const authContext = useContext(AuthContext);
 
 const handleLogout = () => {
-  if (authContext) {
-    authContext.logout();
+   clearToken();
     navigate('/login');
-  }
+  
 };
   return (
     <nav className="bg-white dark:bg-black shadow-md py-4 px-6 sm:px-10 transition-colors duration-200">
@@ -43,7 +41,7 @@ const handleLogout = () => {
         >
           {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
         </button>
-        {authContext?.user && (
+       
             <button
               onClick={handleLogout}
               className={`p-2 rounded-full ${isDarkMode 
@@ -55,7 +53,7 @@ const handleLogout = () => {
             >
               <FaSignOutAlt className="w-5 h-5" />
             </button>
-          )}
+          
         </div>
       </div>
     </nav>

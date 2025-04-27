@@ -1,7 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import { AuthProvider } from './context/AuthContext';
 import { Login } from './pages/Login/Login';
 import { ProtectedRoute } from './routes/PrivateRoute';
 import HorseDetails from './pages/HorseDetails/HorseDetails';
@@ -10,7 +9,6 @@ import HorseList from './pages/HorseList/HorseList';
 function App() {
   return (
     <Router>
-      <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
@@ -38,7 +36,6 @@ function App() {
             }
           />
         </Routes>
-      </AuthProvider>
     </Router>
   );
 }
