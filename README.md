@@ -1,54 +1,168 @@
-# React + TypeScript + Vite
+# 🐴 Horse Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern horse management web app built with:
+- Vite
+- React 18
+- TypeScript
+- TailwindCSS v4
+- JWT Authentication
+- React Router v6
+- Axios
+- Dark/Light Mode (ThemeContext)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the Repository
+git clone https://github.com/HaniAbderrazak/horse_project.git
+cd horse_project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Install Dependencies
+npm install
+# or
+pnpm install
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 3. Start Development Server
+npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Access app at: http://localhost:5173
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📁 Project Structure
+
+src/
+│
+├── api/
+│   └── horses.ts          # Horse TypeScript Interface
+│
+├── assets/
+│   └── images/             # Static images (default avatar, etc.)
+│
+├── components/             # Reusable UI components
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── LoaderComponent.tsx
+│   ├── NotFoundComponent.tsx
+│   ├── HorseComponent.tsx
+│   ├── SwipperCarousel.tsx
+│
+├── context/
+│   └── ThemeContext.tsx    # Theme (Dark/Light Mode) Context
+│
+├── hooks/
+│   └── useHorses.ts        # Custom hook to fetch horses
+│
+├── pages/
+│   ├── Login.tsx
+│   ├── HorseList.tsx
+│
+├── routes/
+│   └── ProtectedRoute.tsx  # Protects private routes
+│
+├── services/
+│   ├── authService.ts      # Login API logic
+│   └── horseService.ts     # Horse API fetching
+│
+├── styles/
+│   └── main.css            # Global CSS and Tailwind setup
+│
+├── utils/
+│   ├── auth.ts             # Token handling
+│   └── horseFilters.ts     # Filtering horses by breed and search
+│
+├── App.tsx                 # App entry layout
+├── main.tsx                # Vite/React app bootstrap
+└── vite.config.ts          # Vite Configuration
+
+---
+
+## 📦 Main Components
+
+- **Navbar**: Top navigation bar
+- **Footer**: Bottom footer
+- **HorseCard (HorseComponent)**: Card for displaying individual horse info
+- **SwipperCarousel**: Hero image carousel
+- **LoaderComponent**: Loading spinner and message
+- **NotFoundComponent**: 404 and search error component
+
+---
+
+## 🧠 Contexts
+
+- **ThemeContext**
+  - Manage dark/light mode across the app
+  - Provide `isDarkMode`, `toggleTheme()` to components
+
+---
+
+## 🧰 Custom Hooks
+
+- **useHorses**
+  - Fetches list of horses
+  - Handles loading and error states
+
+---
+
+## 🔐 Authentication
+
+- **authService.ts**
+  - POST /login to get JWT token
+  - Store token in localStorage
+
+- **ProtectedRoute.tsx**
+  - Guards routes that require authentication
+  - Redirects to login if unauthenticated
+
+---
+
+## 🐎 Horses Logic
+
+- **horseService.ts**
+  - Fetch all horses from backend
+
+- **horseFilters.ts**
+  - `filterHorsesByBreed(horses, breed)`
+  - `filterHorsesBySearch(horses, searchTerm)`
+
+- **Horse.ts**
+  - Full horse model, including user, gender, place, injuries, services, etc.
+
+---
+
+## 🎨 Styling
+
+- Fully styled with **TailwindCSS v4**
+- Dark mode supported
+- Responsive and mobile friendly
+
+---
+
+## 🛣️ Routes
+
+- `/login` → Login page
+- `/horses` → Horse list page (with search + filter + pagination)
+- `/horses/:id` →  Horse details page
+
+---
+
+## 🔥 Features
+
+- User authentication with JWT
+- Protected pages
+- Dynamic horse filtering (search by name, breed, etc.)
+- Filter horses by breed
+- Responsive pagination
+- Dark mode toggle
+- Reusable and clean components
+- Error handling (loading, empty states, not found pages)
+
+---
+
+## 👨‍💻 Developer
+
+Made with ❤️ by [Hani Abderrazak](https://github.com/HaniAbderrazak)
+
+---
+
