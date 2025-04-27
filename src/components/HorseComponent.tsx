@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const HorseCard = ({
   id,
   name,
-  horse_number,
+  
   breed,
   date_of_birth,
   gender,

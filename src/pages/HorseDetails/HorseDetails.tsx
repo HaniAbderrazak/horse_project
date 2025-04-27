@@ -14,7 +14,7 @@ const HorseDetails = () => {
   const [image, setImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'details' | 'pedigree' | 'records'>('details');
 
-  const { horse, loading, error } = useHorseById(horseId);
+  const { horse, loading } = useHorseById(horseId);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
